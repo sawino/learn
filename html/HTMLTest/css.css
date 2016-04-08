@@ -1,0 +1,49 @@
+#parentContainer {
+    margin: 20px;
+    padding: 10px;
+    border: 10px solid black;
+    color: rgb(255, 0, 0)
+    
+}
+
+#parentContainer p {
+    position: relative;
+}
+
+#fontTxt {
+    color: rgb(255, 0, 0);
+    opacity: 0.75;
+    filter: alpha(opacity=75); /* IE*/
+    font-weight: bold;
+    font-style: italic;
+    font-size: 24;
+    background-color: rgb(0, 255, 0);
+}
+
+#overflowContainer {
+
+    
+    
+}
+
+#overflowContainer p {
+    background-color: yellow;
+    width: 100px;
+    height: 50px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+#overflowContainer .visible {
+    /*overflow: visible;*/
+    overflow: visible;
+
+}
+
+#overflowContainer .hidden {
+    overflow: hidden;
+}
+
+#overflowContainer .scroll {
+    overflow: scroll;
+}

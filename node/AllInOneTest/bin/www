@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+var debug = require('debug')('AllInOneTest');
+var app = require('../app');
+
+app.set('port', process.env.PORT || 3000);
+
+console.log('port ', app.get('port'));
+var server = app.listen(app.get('port'), function() {
+    console.log('listened');
+  debug('Express server listening on port ' + server.address().port);
+});

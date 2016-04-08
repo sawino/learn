@@ -1,0 +1,108 @@
+<!DOCTYPE>
+<html>
+    <head></head>
+    <body>
+        <h3>location</h3>
+        <input type="text" placeholder="go to address" id="addressTxt"/>
+        <input type="button" value="assign" id="assignBtn"></input>
+        <input type="button" value="replace" id="replaceBtn"/>
+        <input type="button" value="show detail" id="locationDetailBtn"/>
+        <p id="locationDetail"></p>
+        
+        <br/>
+        <h3>history</h3>
+        <input type="button" id="backBtn" value="back"/>
+        <input type="button" id="forwardBtn" value="forward"/>
+        <input type="text" id="goTxt" placeholder="Go to history number"/>
+        <input type="button" id="goBtn" value="go">
+        
+        <br/>
+        <h3>navigator</h3>
+        <p id="navigatorDetail"></p>
+        
+        <h3>screen</h3>
+        <p id="screenDetail"></p>
+        
+        <h3>dialogs</h3>
+        <button id='alertBtn'>Alert</button>
+        <button id='promptBtn'>Prompt</button>
+        <button id='confirmBtn'>Confirm</button>
+        <button id="modalBtn">Modal</button>
+        <button id='openBtn'>Open</button>
+        <p id='dialogDetail'></p>
+        
+        <script src="commonJs.js"></script>
+        <script>
+
+            window.onload = function() {
+                var addressTxt = getEle("addressTxt");
+                if (addressTxt) {
+                    //code
+                    addressTxt.onchange = function() {
+                        console.log(addressTxt.value);
+                        
+                    }
+                }
+                
+                getEle('assignBtn').onclick = function() {
+                    window.location.assign(getEle('addressTxt').value);
+                }
+                
+                getEle('replaceBtn').onclick = function() {
+                    window.location.replace(getEle('addressTxt').value);
+                }
+                
+                getEle('locationDetailBtn').onclick = function() {
+                    getEle('locationDetail').textContent = "procotol: " + location.procotol + " host: " + location.host +
+                    " host name: " + location.hostname + " port: " + location.port + " path name: " + location.pathname +
+                    " search: " + location.serach;
+                }
+                
+                var backBtn = getEle("backBtn");
+                backBtn.onclick = function() {
+                    //alert(familyNameInput.value);
+                    history.back();
+                }
+                
+                var forwardBtn = getEle("forwardBtn");
+                forwardBtn.onclick = function() {
+                    history.forward();
+                }
+                
+                getEle("goBtn").onclick = function() {
+                    var txt = getEle("goTxt").value;
+                    if (txt.length > 0) {
+                        //code
+                        var index = parseInt(txt);
+                        console.log(index);
+                        history.go(index);
+                    }
+                }
+                
+                getEle('navigatorDetail').textContent = navigator.appName + " " + navigator.appCodeName + " " + navigator.appVersion
+                    + navigator.product + " " + navigator.oscpu + " " + navigator.geolocation + " " + navigator.onLine;
+                    
+                getEle('screenDetail').textContent = createContent(screen.width, screen.height, screen.colorDepth, screen.availWidth, screen.availHeight);
+            
+                getEle('alertBtn').onclick = function () { alert('hey'); }
+                
+                getEle('confirmBtn').onclick = function () { getEle('dialogDetail').textContent = confirm("Yes, No?");}
+                
+                getEle('promptBtn').onclick = function() { getEle('dialogDetail').textContent = prompt('What?');}
+                
+                getEle('modalBtn').onclick = function() { getEle('dialogDetail').textContent = showModalDialog ?
+                                                                                                                showModalDialog('modalDialog.html',
+                                                                                                               ['Custom Title', "pig"]
+                                                                                                               , 'dialogWidth: 400; dialogHeight: 300; resizable: true')
+                                                                                                                : "no modal dialog";
+                }
+                
+                getEle("openBtn").onclick = function() { window.open("baidu.com");}
+                
+                //document.selector("#openBtn").click();
+            
+            }
+            
+        </script>
+    </body>
+</html>

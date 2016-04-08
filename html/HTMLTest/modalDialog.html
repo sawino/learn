@@ -1,0 +1,38 @@
+<html>
+    <body>
+        
+        <p>values</p>
+        <input type="text" id="txt1"/>
+        <input type="text" id="txt2"/>
+        <button onclick="ok">OK</button>
+        <button onclick="cancel">Cancel</button>
+        
+        <script>
+            
+            
+            window.onload = function () {
+                
+                
+                
+            }
+            
+            function ok() {
+                //code
+                                
+
+                window.returnValue = [];
+
+                returnValue[0] = document.getElementById('txt1').value;
+                returnValue[1] = document.getElementById('txt2').value;
+                window.close();
+                
+            }
+            
+            function cancel() {
+                window.close();
+            }
+            
+            
+        </script>
+    </body>
+</html>

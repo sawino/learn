@@ -1,0 +1,24 @@
+//
+   Created by yangsaw on 11/14/2015.
+
+
+//h1= title
+//p Welcome to #{title}
+//input(type='text' ng-model='userName')
+//p {{userName}}
+
+input(type="text", ng-model="searchTitle")
+input(type="text", ng-model="noteValue")
+button(ng-click="searchByTitle()") search
+button(ng-click="deleteByTitle()") delete
+button(ng-click="addToDo()") add
+button(ng-click="updateByTitle()") update
+
+br
+button(ng-click="searchAll()") search all
+
+ol
+  li(ng-repeat="todo in todos | orderBy: 'title'")
+    span {{todo.title}} &nbsp;
+    span {{todo.note}}
+

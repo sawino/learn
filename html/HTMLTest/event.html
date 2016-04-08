@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    
+    <body>
+        <h3>Add Event Handler</h3>
+        <p id="addEventTxt"></p>
+        <p id="removeEventTxt"></p>
+        
+        <h3>Device Event</h3>
+        <p id="mouseEventTxt">mouse event</p>
+        <input type="text" id="keyInput">
+        <p id="keyEventTxt">key event</p>
+        
+        
+        
+        <script src="jquery.min.js"></script>
+        <script>
+            
+            // no 'on' if used this method
+            window.addEventListener('load', function(e) {
+                $('#addEventTxt').text("form loaded");
+            }, false);
+            
+            // have 'on' when used
+            window.removeEventListener('load', function(e) {}, true);
+            
+            $('#mouseEventTxt').get(0).onmouseenter = function(event) {
+                // shiftKey, altKey
+                var ctrlKey = event.ctrlKey ? "ctrl" : "noCtrl";
+                //var scroll = getScrollOffsets();
+                $(this).text(event.clientX + " " + event.clientY + /*" " + scroll.x + " " + scroll.y +*/ " " + ctrlKey );
+            }
+            
+            $('#mouseEventTxt').bind('mouseleave', function() {
+                
+                $(this).text('left');
+            });
+            
+            $('#mouseEventTxt').get(0).ondblclick = function(event) {
+                
+                $(this).text("dblClick");
+            }
+            
+            $('#mouseEventTxt')[0].onmouseover = function() {
+                $(this).text('over');
+                //alert('s');
+            }
+            
+            $('#keyInput').bind('keypress', function(e) {
+                console.log(e.keyCode);
+                
+                var name = e;
+                console.log(name);
+                
+                $('#keyEventTxt').text(name);
+            });
+            
+            //window.removeEventListener("load");
+            
+            function cancelEvent(event) {
+                event = event || window.event;
+                
+                if (event.preventDefault) {
+                    //code+
+                    event.preventDefault();
+                }
+                
+                if (event.returnValue) {
+                    //code
+                    event.returnValue = false;
+                }
+                
+                return false;
+            }
+        </script>
+    </body>
+</html>

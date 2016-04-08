@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="bootstrap.min.css">
+    </head>
+    
+    <body class="container">
+        
+        <h3>Selector</h3>
+        <button id="selectByTagBtn">Tag</button>
+        <button id="selectByNameBtn" name="selectByNameBtn">Name</button>
+        <button id="selectByClassBtn" class="selectByNameBtnClass">Class</button>
+        <button id="selectBySelectorAllBtn" class="selectorAll">SelectorAll</button>
+        <button id="selectBySelectorBtn" class="selectorAll" MyAttr="hehe">Selector</button>
+        <button id="selectedTextBtn">Selected Text</button>
+        
+        <h3>Document Structure</h3>
+        <button id="firstChildBtn">First Child</button>
+        <button id="innerHTMLBtn">Inner HTML</button>
+        <button id="outerHTMLBtn">Outer HTML</button>
+        
+        <h3>Element CURD</h3>
+        <button id="insertBeforeBtn">Insert Before</button>
+        <button id="appendChildBtn">Append Child</button>
+        <button id="removeChildBtn">Remove Me</button>
+        
+        <h3>Form</h3>
+        <form action="#" method="post" class="form-horizontal">
+            <div class="form-group">
+                <label for="Name" class="control-label col-md-2">Name</label>
+                <div class="col-md-8">
+                    <input type="text" name="Name" class="form-control"/>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="Gender" class="col-md-2 control-label">Gender</label>
+                <div class="col-md-8">
+                    <div class="radio-inline">
+                        <input type="radio" name='Gender' value="Male"  checked>Male</input>
+                    </div>
+                    <div class="radio-inline">
+                        <input type="radio" name='Gender' value="Female">Femail</input>  
+                    </div>                
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="HasBaby" class="control-label sr-only">Has Baby</label>
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="check-box">
+                        <input type="checkbox" name="HasBaby" value="HasBaby">Block Reset</input>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label class="control-lable sr-only">Action</label>
+                <div class="col-md-offset-2 col-md-8">
+                    <button type="reset">Reset</button>
+                    <button type="submit">Submit</button>
+                </div>
+            </div>
+        </form>
+        
+        <div contenteditable="true">Editable Content</div>
+        
+        <script src="jquery.min.js"></script>
+        <script src="bootstrap.min.js"></script>
+        <script src="commonJs.js"></script>
+        <script>
+            $(document).ready(function() {
+                //$("button").not("#selectByNameBtn").eq(0).click(function() {
+                //   $(this).text("hello"); 
+                //});
+                
+                //document.querySelector('#selectByTagName').textContent = "kkk";
+                
+                getEle('selectByTagBtn').onclick = function () { document. getElementsByTagName('button')[0].textContent = "OK"; }  
+                getEle('selectByNameBtn').onclick = function () { document. getElementsByName('selectByNameBtn')[0].textContent = "OK"; }          
+                getEle('selectByClassBtn').onclick = function () { document. getElementsByClassName('selectByNameBtnClass')[0].textContent = "OK"; }          
+                getEle('selectBySelectorAllBtn').onclick = function () { document.querySelectorAll('.selectorAll')[0].textContent = "OK"; };        
+                getEle('selectBySelectorBtn').onclick = function () { document.querySelector('button[MyAttr="hehe"]').textContent = "OK"; };          
+
+                getEle('firstChildBtn').onclick = function () { document.body.firstChild.textContent = "First Child of body"; };
+                getEle('innerHTMLBtn').onclick = function() { /*$('#innerHTMLBtn').text("OK");*/getEle('innerHTMLBtn').innerHTML = "OK";}
+                getEle('outerHTMLBtn').onclick = function() { /*$('#innerHTMLBtn').text("OK");*/getEle('outerHTMLBtn').outerHTML = "<a> OK </a>";}
+                $('#insertBeforeBtn').click( function() { console.log('h');var ele = document.createElement("button"); ele.innerHTML = "Before"; getEle('insertBeforeBtn').parentNode.insertBefore(ele, getEle('insertBeforeBtn'));})
+                $('#appendChildBtn').click(function () { var ele = "<button>Append</button>"; $(this).parent().append(ele)})
+                $('#removeChildBtn').click(function() { $(this).remove();});
+                
+                $('form').bind('reset', function() { var val = $('input[value="HasBaby"]').is(':checked');val = document.forms[0].HasBaby.checked;console.log(val); return !val;});
+                $('#selectedTextBtn').click( function () {  $(this).text(window.getSelection().toString()) });
+            
+            });
+        </script>
+    </body>
+</html>

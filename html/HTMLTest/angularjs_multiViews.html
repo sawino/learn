@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+    <head>
+    </head>
+    <body ng-controller="myController">
+        
+        
+        <div ui-view></div>
+        
+        
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script>
+            angular.module('myApp', ['controllers', 'ui.router']);
+            angular.module('myApp').config(function($stateProvider) {
+                $stateProvider
+                    .state('mainViewState', {
+                        url: '/',
+                        views: {
+                            // viewName@stateName
+                            // main view
+                            '': {templateUrl: 'mainView.html' },
+                            'subView1@mainViewState': { template: "sub view 1"},
+                            'subView2@mainViewState': { 
+                                templateUrl: "subView2.html",
+                                controller: 'myController'}
+                        }                        
+                    });
+            });
+            
+            angular.module('controllers', []);
+            angular.module('controllers').controller('myController', ['$scope', function($scope) {
+                $scope.msg = "sub view 2";
+            }]);
+        </script>
+    </body>
+</html>

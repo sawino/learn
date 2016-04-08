@@ -1,0 +1,47 @@
+<html ng-app="myApp">
+    <head>
+        
+    </head>
+    <body ng-controller='myController'>
+        {{hello}}
+        <a ui-sref="parent">Parent</a>
+        <a ui-sref="parent.child1">Child1</a>
+        <!--<a ui-sref="sss">Otherwise</a>-->
+        <div ui-view></div>
+        
+        <style>
+            .active {
+                background-color: yellow;
+            }
+        </style>
+        <script src="bower_components/angular/angular.min.js"></script>
+        <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+        <script>
+            angular.module("myApp", ['controllers', 'ui.router']);
+            
+            angular.module("myApp").config(function($stateProvider, $urlRouterProvider) {
+                $stateProvider
+                    .state("parent", {
+                        url: "/parent",
+                        templateUrl: "parent.html"
+                    }) // /parent/child1
+                    .state("parent.child1", {
+                        url: "/child1",
+                        templateUrl: "child1.html"
+                    })
+                    .state('parent.child2', {
+                        url: '/child2',
+                        templateUrl: "child2.html"
+                    });
+                    
+                $urlRouterProvider.otherwise('/parent/child1');
+            });
+            
+            angular.module("controllers", []);
+            angular.module("controllers").controller('myController', ['$scope', function($scope) {
+              $scope.hello = "hmmm";  
+            }]);
+        </script>
+    </body>
+
+</html>

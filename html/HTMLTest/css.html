@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" href="css.css">
+    </head>
+    <body>
+        <h3>Box Model</h3>
+        <div id="parentContainer">
+            <p id="containerText">Hello</p>            
+        </div>
+        <input type="checkbox">border-box</input>
+        <p id="parentContainerInfo"></p>
+        
+        <h3>Display And Visibility</h3>
+        <button>Pre</button>
+        <button id="visBtn">Vis Btn</button>
+        <button>Next</button>
+        <select id="visSel">
+            <option value="visible">visible</option>
+            <option value="hidden">hidden</option>
+        </select>
+        <select id="disSel">
+            <option value="block">block</option>
+            <option value="inline">inline</option>
+            <option value="none">none</option>
+        </select>
+        
+        <h3>Font</h3>
+        <p>normal text</p>
+        <p id="fontTxt">50% Red Bold Italic 24</p>
+        
+        <h3>Overflow & Clip</h3>
+        <div id="overflowContainer">
+            <p class="visible">Visible Visible Visible Visible Visible Visible Visible Visible Visible Visible </p>
+            <p class="hidden">hidden hidden hidden hidden hidden hidden hidden hidden hidden hidden hidden </p>
+            <p class='scroll'>scroll scroll scroll scroll scroll scroll scroll scroll scroll scroll scroll </p>
+        </div>
+        
+        <h3>Inline CSS</h3>
+        <p id="inlineTxt">Inline CSS bold text</p>
+        
+        
+        <script src="jquery.min.js"></script>
+        <script src="commonJs.js"></script>
+        <script>
+            $(document).ready(function () {
+                var container = $('#parentContainer');
+                var text = $("#parentContainer p").first();
+
+                container.next().change(function() { var checked = $(this).is(":checked"); console.log(checked);
+                                        if (checked) {
+                                            //code  
+                                            container.css('box-sizing', 'border-box');
+                                        }
+                                        else {
+                                            container.css('box-sizing', 'content-box');
+                                        }
+                                        
+                                        
+                                        var containerInfo = "";
+                                        containerInfo += "container\n"
+                                                       + "width: " + container.css('width')
+                                                       + " margin: " + container.css('margin')
+                                                       + " padding: " + container.css('padding')
+                                                       + " border: " + container.css('border-width')
+                                                       + "text\n"
+                                                       + "left: " + text.css('left')
+                                                       + " top: " + text.css('top');
+                                                       
+                                        $('#parentContainerInfo').text(containerInfo);
+
+                                        });  
+            });
+            
+            $('#visSel').change(function() {
+                $('#visBtn').css('visibility', $(this).val());
+            })
+            
+            $('#disSel').change(function() {
+                $('#visBtn').css('display', $(this).val());
+            })
+            
+            getEle('inlineTxt').style.fontWeight = "bold";
+        </script>
+    </body>
+</html>

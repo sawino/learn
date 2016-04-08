@@ -1,0 +1,98 @@
+<html>
+    <head>
+        
+        
+        
+    </head>
+    <body>
+        <script>
+            window.addEventListener("load", function() {
+            
+            function getBody() {
+                return document.getElementsByTagName('body')[0];
+                 
+            }
+            // module
+            var myModule = (function() {
+                // private contents
+                var member = "hello, Module Pattern";
+                var sayHello = function() {
+                    getBody().textContent = member;
+                }
+                
+                return {
+                    // public contents
+                    publicSayHello: function() {
+                        sayHello();
+                    }
+                }
+            })();
+            
+            myModule.publicSayHello();
+            
+            // prototype
+            // var MyPrototype = function () {
+            //     this.member = "hello, Prototype Pattern";
+            // }
+            
+            // MyPrototype.prototype = function() {
+            //     var sayHello = function() {
+            //         getBody().textContent += member;
+            //     };
+                
+            //     return {
+            //         publicSayHello : sayHello
+            //     }
+            // }();
+            
+            // MyPrototype.publicSayHello();
+            
+            // singleton
+            var sgt = (function() {
+                var instance;
+                
+                function create() {
+                    var member = " hello, Singleton";
+                    var sayHello = function() {
+                        getBody().textContent += member;
+                    }
+
+                    return {
+                        sayHello: sayHello
+                    }
+                }
+                
+                                    
+                return {
+                    getInstance: function() {
+                        if (!instance) {
+                            instance = create();
+                        }
+                        
+                        return instance;
+                    }
+                }
+            })();
+            
+            sgt.getInstance().sayHello();
+            
+            // array
+            var arrayObj = {
+                arrayFunc: function() {
+                    arguments.callee;
+                    arguments.caller;
+                }
+            }
+            function arrayFunc(){
+                arguments.callee;
+                arguments.caller;
+            };
+            
+            arrayObj.arrayFunc.apply(this);
+            
+            }, false);
+            
+        </script>
+       
+    </body>
+</html>

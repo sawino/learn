@@ -1,0 +1,34 @@
+extends layout
+
+block content
+  table
+    th
+      td
+        a(href="#/test") test
+      td
+        a(href="#/test/passedId") testId
+      td
+        a(href="#/testFilter") filter
+      td
+        a(href="#/testRepeat") repeat
+      td
+        a(href="#/testResource") resource
+      td
+        a(href="#/todos") AllInOneTodo
+
+  div(ng-view)
+
+  script(type="text/ng-template",id="ToDo")
+    include ToDoTemplate
+  script(type="text/ng-template", id="Test")
+    include partials/Test
+  script(type="text/ng-template", id="partials/TestId")
+    include partials/TestId
+  script(type="text/ng-template", id="partials/TestFilter")
+    include partials/TestFilter
+  script(type="text/ng-template", id="partials/testRepeat")
+    include partials/testRepeat
+  script(type="text/ng-template", id="partials/testResource")
+    include partials/testResource
+
+
