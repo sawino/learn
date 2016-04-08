@@ -1,0 +1,123 @@
+<html>
+
+<body>
+    <script>
+        // way 1, constructor and prototype
+        // pitfalls: 1. complicated 2. hard to read and write because keywords usage of this and prototype
+        function Cat() {
+            var self = this;
+            this.name = "cat1";
+        }
+            
+        // if we define makeSound in the Cat(), this function will be declared when created 
+        // every instance, so it's bad.
+        Cat.prototype.makeSound = function () {
+            console.log("cat sound 1");
+        }
+        
+        Cat.prototype.sharedData = "shared data 1";
+
+        var cat1 = new Cat();
+        console.log(cat1.name);
+        cat1.makeSound();
+
+        // way 2, ECMAScript5, Object.create()
+        // pitfalls: 1. no private method and member. 2. the created instances cannot share data
+        var Cat2 = {
+            name: "cat2",
+            makeSound: function () { console.log("cat sound 2"); }
+        }
+
+        // for browsers which older than IE9
+        if (!Object.create) {
+            Object.create = function (o) {
+                function F() { };
+                F.prototype = o;
+                return new F();
+            }
+        }
+
+        var cat2 = Object.create(Cat2);
+        console.log(cat2.name);
+        cat2.makeSound();
+
+        // way 3, minimalist approach
+
+
+        // encapsulation 
+        var Animal = {
+            createNew: function () {
+                var animal = {};
+                animal.sleep = function () { console.log('cat3 sleep'); }
+                return animal;
+            }
+        }
+
+        // inheritance
+        var Cat3 = {
+            createNew: function () {
+                // call 
+                var cat = Animal.createNew();
+                // this various because of function context
+                // so save self to reference "this" always.
+                var self = this;
+                
+                // private, any var that is not defined to cat
+                var privateSound = "cat sound 3";
+
+                cat.name = "cat 3";
+                cat.makeSound = function () { console.log(privateSound); };
+                // call shared data
+                cat.makeSharedSound = function () { console.log(Cat3.sharedSound) };
+                cat.changeSharedSound = function (x) { Cat3.sharedSound = x };
+                return cat;
+            },
+            // shared data, declared at the class object
+            sharedSound: "shared sound"
+        }
+
+        var cat3 = Cat3.createNew();
+        cat3.makeSound();
+        cat3.sleep();
+        cat3.makeSharedSound();
+        
+        var cat4 = Cat3.createNew();
+        cat4.changeSharedSound("changed shared sound");
+        cat3.makeSharedSound();
+        
+        // this test
+        // this in function depends on the one which is calling it
+        // rather than the one who defined it
+        // x actually belongs to window
+        var x = 10;
+        function func() {
+            console.log(this.x);
+        }
+        
+        var obj = {
+            x: 20,
+            fn: function() {
+                console.log(this.x);
+            }
+        }
+        
+        var fn = obj.fn;
+        func(); // 10, because the caller is window
+        fn(); // 10, though fn came from obj, it's called by window
+        
+        // IIFE(Immediately-Invoked Function Expression)
+        // 1. to avoid code be modified by other modules
+        // 2. release the memory when the code is finished
+        
+        (function(c, w) {
+            'use strict';
+            var x = 10;
+            c.log(x);
+            c.log(w.x === undefined);
+            
+        })(console, window);
+        
+    </script>
+</body>
+
+</html>

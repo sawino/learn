@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        
+    </head>
+    <body onload="onloaded()">
+        
+        <script>
+            // how to declare a method
+            Function.prototype.method = function (name, func) {
+                print('adding new method ' + name + " " + func);
+                this.prototype[name] = func;
+                return this;
+            }
+            
+            // print contents to html
+            Object.prototype.print = function() {
+                document.writeln(this + "<br/>");
+            }
+            
+            function print(info) {
+                
+                document.writeln(info + "<br/>");
+            }
+            
+            function onloaded() {
+                testJASONParse();
+                testString();
+                testTypeOf();
+                testRefactor();
+                testApply();
+                testTryCatch();                                
+                testMethod();                
+                testClosure();                
+                testInherit();
+                testArray();
+                testNumber();
+            }
+            
+            function testNumber() {
+                var pi = Math.PI;
+                pi.print();
+                print(pi.toExponential(7));
+                print(pi.toFixed(3));
+                print(pi.toPrecision(3));
+                print(pi.toString(16));
+            }
+            
+            function testInherit() {
+                //code
+
+
+                var A = function () {
+                    this.name = "parent";
+                    this.age = 5;
+                };
+                
+                A.prototype.say = function() {
+                    print(this.name + " " + this.age);
+                }
+                
+                var a = new A();
+                a.say();
+                
+
+                
+                var B = function () {
+                  this.name = "child";  
+                };
+
+                B.prototype = new A();
+                
+                var b = new B();
+                b.say();
+            }
+            
+            function testArray() {
+                //code
+                var a = ['a', 'b', 'c', 'd', 'e'];
+                var b = ['x', 'y', 'z'];
+                var c = a.concat(b);
+                c.print();
+                c.reverse();
+                c.print();
+                c.unshift('1');
+                c.print();
+                c.sort(function (a, b) {
+                    return b > a;
+                    
+                });
+                c.print();
+                c.splice(0, 1);
+                c.print();
+            }
+            
+            function testMethod() {
+                //code      
+                var A = new Function();
+                
+                A.pig = function() {
+                    return print('pig');
+                    };
+                
+                
+                A.method("test", function() {                    
+                   print("method helper func"); 
+                });
+                
+                //print(typeof A.prototype);
+                
+                A.prototype.test();
+            }
+            
+            function testClosure() {
+                //code
+                
+                var result = function () {
+                    var val = 22;
+                    
+                    return {
+                        getVal: function() {
+                            return val;
+                        }
+                    }
+                    // pay attention to the ()
+                } ();
+                
+                print(typeof result.val);
+                result.getVal().print();;
+            }
+            
+            function testTryCatch() {
+                //code
+                var a = function() {
+                    throw {
+                        code: 777
+                    }
+                }
+                
+                try {
+                    a();
+                }
+                catch(e) {
+                    e.code.print();
+                }
+            }
+            
+            function testApply() {
+                var A = {
+                    val: "apply",
+                    myFun: function () {
+                        //code
+                        //alert(this.val);
+                        print(arguments.length);
+                        print(this.val);
+                    }
+                };                
+                
+                var B = {
+                    val: "appply in B"
+                };
+                
+                A.myFun.apply(B);                
+                
+            }
+            
+            function testRefactor() {                
+                //var hey = new Object();
+                var hey = {};
+                hey.hello = 1234;
+                //alert(hey.hello);
+                var val = hey.hasOwnProperty('hello');
+                val.print();
+                val = hey.hasOwnProperty('noHello');
+                val.print();
+                delete hey.hello;
+                var val = hey.hasOwnProperty('hello');
+                val.print();
+            }
+            
+            function testTypeOf() {
+                              
+                (typeof "heee").print();
+                (typeof 432.333).print();
+            }
+            
+            function testString() {
+                //code
+                var str = "hello there  ";
+                str = str.toUpperCase();                
+                str.print();
+            }
+            
+            function testJASONParse() {
+                //code
+                // alert("hi");
+                // var hi = [];
+                // alert(typeof(hi));
+                document.write("<h1 id='logger' name='logger'>ppp</h1>");
+                var jtext = '{"name": "pig"}';
+                var jsobj = JSON.parse(jtext);
+                document.getElementById('logger').innerHTML = jsobj.name;
+            }
+        </script>
+    </body>
+</html>
