@@ -5,9 +5,11 @@
  */
 require('babel-core/register');
 require('babel-polyfill');
+var debug = require('debug')('es6Test');
+global.debug = debug;
 var app = require('../app');
-var debug = require('debug')('es6Test:server');
 var http = require('http');
+debug('debug log init');
 
 /**
  * Get port from environment and store in Express.

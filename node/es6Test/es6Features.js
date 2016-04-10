@@ -1,4 +1,6 @@
 'use strict';
+var Record = require('./models/Record');
+
 function log(m) {
     console.log(m);    
 };
@@ -218,4 +220,11 @@ async function asyncF() {
 
 exports.asyncTest = function() {
     return asyncF();
+};
+
+exports.asyncMongooseTest = async function() {
+    // all methods return Promise
+    await Record.create({name: 's'});
+    // all queries don't return Promise, but their exec() does.
+    return await Record.find({}).exec();
 };

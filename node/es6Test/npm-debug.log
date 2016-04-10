@@ -1,0 +1,45 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\Users\\yangsaw\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'start' ]
+2 info using npm@3.5.0
+3 info using node@v4.2.2
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info lifecycle es6Test@0.0.0~prestart: es6Test@0.0.0
+6 silly lifecycle es6Test@0.0.0~prestart: no script for prestart, continuing
+7 info lifecycle es6Test@0.0.0~start: es6Test@0.0.0
+8 verbose lifecycle es6Test@0.0.0~start: unsafe-perm in lifecycle true
+9 verbose lifecycle es6Test@0.0.0~start: PATH: C:\Users\yangsaw\AppData\Roaming\npm\node_modules\npm\bin\node-gyp-bin;C:\backup\code\learn\node\es6Test\node_modules\.bin;C:\Program Files (x86)\ActiveState Komodo Edit 9\;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v5.5\libnvvp;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Microsoft ASP.NET\ASP.NET Web Pages\v1.0\;C:\Program Files\Microsoft SQL Server\110\Tools\Binn\;C:\Program Files (x86)\RSA SecurID Token Common;C:\Program Files\TortoiseGit\bin;C:\Program Files\Microsoft\Web Platform Installer\;C:\Program Files (x86)\Heroku\bin;C:\Program Files (x86)\git\cmd;C:\Program Files (x86)\Perforce;C:\Users\yangsaw\AppData\Roaming\npm;C:\Program Files\nodejs\;C:\Users\yangsaw\.dnx\bin;C:\Program Files\Microsoft DNX\Dnvm\;C:\Program Files\Microsoft SQL Server\120\Tools\Binn\;C:\Program Files (x86)\Windows Kits\10\Windows Performance Toolkit\;C:\Program Files (x86)\nodejs\;C:\Program Files\Collaborator Client;C:\Program Files\Git\cmd;C:\Program Files (x86)\Perforce\Server;C:\Program Files\Java\jdk1.8.0_25\bin;C:\Program Files\Android\apache-ant-1.9.4\bin;C:\Users\yangsaw\AppData\Local\Android\sdk\tools;C:\Users\yangsaw\AppData\Local\Android\sdk\platform-tools;C:\Users\yangsaw\AppData\Local\Programs\Git\cmd;C:\Program Files (x86)\Microsoft VS Code\bin
+10 verbose lifecycle es6Test@0.0.0~start: CWD: C:\backup\code\learn\node\es6Test
+11 silly lifecycle es6Test@0.0.0~start: Args: [ '/d /s /c', 'node ./bin/www' ]
+12 silly lifecycle es6Test@0.0.0~start: Returned: code: 1  signal: null
+13 info lifecycle es6Test@0.0.0~start: Failed to exec start script
+14 verbose stack Error: es6Test@0.0.0 start: `node ./bin/www`
+14 verbose stack Exit status 1
+14 verbose stack     at EventEmitter.<anonymous> (C:\Users\yangsaw\AppData\Roaming\npm\node_modules\npm\lib\utils\lifecycle.js:232:16)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at EventEmitter.emit (events.js:172:7)
+14 verbose stack     at ChildProcess.<anonymous> (C:\Users\yangsaw\AppData\Roaming\npm\node_modules\npm\lib\utils\spawn.js:24:14)
+14 verbose stack     at emitTwo (events.js:87:13)
+14 verbose stack     at ChildProcess.emit (events.js:172:7)
+14 verbose stack     at maybeClose (internal/child_process.js:818:16)
+14 verbose stack     at Process.ChildProcess._handle.onexit (internal/child_process.js:211:5)
+15 verbose pkgid es6Test@0.0.0
+16 verbose cwd C:\backup\code\learn\node\es6Test
+17 error Windows_NT 6.1.7601
+18 error argv "C:\\Program Files\\nodejs\\node.exe" "C:\\Users\\yangsaw\\AppData\\Roaming\\npm\\node_modules\\npm\\bin\\npm-cli.js" "start"
+19 error node v4.2.2
+20 error npm  v3.5.0
+21 error code ELIFECYCLE
+22 error es6Test@0.0.0 start: `node ./bin/www`
+22 error Exit status 1
+23 error Failed at the es6Test@0.0.0 start script 'node ./bin/www'.
+23 error Make sure you have the latest version of node.js and npm installed.
+23 error If you do, this is most likely a problem with the es6Test package,
+23 error not with npm itself.
+23 error Tell the author that this fails on your system:
+23 error     node ./bin/www
+23 error You can get their info via:
+23 error     npm owner ls es6Test
+23 error There is likely additional logging output above.
+24 verbose exit [ 1, true ]

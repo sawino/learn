@@ -62,5 +62,16 @@ router.get('/asyncTest', async function(req, res) {
     }
 });
 
+router.get('/asyncMGTest', async function(req, res) {
+   try {
+       var v = await e6.asyncMongooseTest();
+       debug(v);
+       res.status(200).end(JSON.stringify(v));
+   } 
+   catch (e) {
+       res.status(200).end(JSON.stringify(e));
+   }
+});
+
 
 module.exports = router;
