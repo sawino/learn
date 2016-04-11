@@ -1,0 +1,36 @@
+//
+   Created by yangsaw on 7/9/2014.
+
+extends layout
+block content
+    p enter the name to search for.
+    form(action='/search-result', method='get')
+        label name
+        input(type='text', name='name')
+        input(type='hidden', name='source', value='web')
+        ul
+            li
+                input(type='checkbox', name='skills', value='apple')
+                lable Nunchucks
+            li
+                // the req.query.skills will have the pig if this is checked
+                input(type='checkbox', name='skills', value='pig')
+                label pig
+        input(type='submit', value='search')
+    br
+    form(action='/signup', method='post')
+        div
+            label name
+            input(type='text', name='name', placeholder='your name')
+        div
+            label email
+            input(type='text', name='email', placeholder='your email')
+        div
+            input(type='submit', value='submit')
+    br
+    form(action='/upload', method='post', enctype='multipart/form-data')
+        div
+            lable file
+            input(type='file', name='image')
+        div
+            input(type='submit')

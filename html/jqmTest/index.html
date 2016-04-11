@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="./jquery.mobile-1.4.3/themes/sam.min.css" />
+    <link rel="stylesheet" href="./jquery.mobile-1.4.3/themes/jquery.mobile.icons.min.css" />
+    <link rel="stylesheet" href="./jquery.mobile-1.4.3/jquery.mobile.structure-1.4.3.min.css">
+    <!--<link rel="stylesheet" href="./jquery.mobile-1.4.3/jquery.mobile-1.4.3.min.css">-->
+    <script src="./jquery-1.11.1.min.js"></script>
+    <script src="./jquery.mobile-1.4.3/jquery.mobile-1.4.3.min.js"></script>
+    <title></title>
+    <script>
+
+        $(document).ready(function() {
+            $("#loadPage").click(function(e)
+            {
+                e.preventDefault();
+
+                alert('hh');
+                $('body').pagecontainer('getActivePage');
+                $('body').pagecontainer('change', 'xx.html', {transition: 'slide'});
+            });
+
+            $( "#mycollapsible" ).collapsible( "expand" );
+        });
+
+        // old: pageinit
+        $(document).on("pagecreate", "#page5", function() {
+
+            var testItem = $("#touch");
+            testItem.on('tap', function() {
+               setFooterText('tap');
+            });
+
+            testItem.on('taphold', function() {
+                setFooterText('taphold');
+            });
+
+            testItem.on('swipe', function() {
+                setFooterText('swipe');
+            });
+
+            testItem.on('swipeleft', function() {
+                setFooterText('left');
+            });
+
+
+
+        });
+
+        $(document).on('scrollstart', function() {
+            setFooterText('start scroll');
+        });
+
+        $(document).on('scrollstop', function() {
+            setFooterText('end scroll');
+        });
+
+        $(window).on('orientationchange', function(e)
+        {
+            var str = window.orientation;
+            if (e.orientation == 0)
+            {
+                setFooterText('portrait' + str);
+            }
+            else
+            {
+                setFooterText('landscape' + str);
+            }
+        });
+
+//        1.4.3 should use pagecontainershow
+//        pagecreate, pageinit, pagebeforeload, pageload, pageloadfailed,
+//        pagebeforeshow, pageshow, pagebeforehide, pagehide
+        $(document).on('pagebeforecreate', function(e) {
+            setFooterText('before create');
+        });
+
+
+
+
+
+        function setFooterText(text)
+        {
+            if (typeof(text) === 'string')
+            {
+                $('#page5 [data-role="footer"] h1').text(text);
+            }
+        }
+    </script>
+</head>
+<body>
+    <div data-role="page" id="page1">
+        <div data-role="header"  data-add-back-btn="true" data-back-btn-text="back btn">
+            <button class='ui-btn ui-shadow ui-corner-all ui-mini ui-btn-a ui-icon-home ui-shadow-icon'>HOME</button>
+            <h1>P 1 </h1>
+            <button>search</button>
+        </div>
+        <div class="ui-content">
+            <p><a href="#page2">to P2</a></p>
+            <p><a id='loadPage' href='#' class='ui-btn'>load page</a></p>
+            <a href="#newDialog" data-transition='pop'>show new dialog</a>
+
+            <button>button</button>
+            <input type="button" value="input button">
+            <a href="#" data-role="button">data-role button</a>
+            <a href="#" data-role="button" data-inline="true">inline button</a>
+            <div data-role="controlgroup" data-type="horizontal">
+                <button data-icon="home" data-iconpos="bottom">horizontal</button>
+                <button data-icon="search" data-iconpos="notext">button</button>
+                <button>group</button>
+            </div>
+            <a href="#" data-role="button" data-rel="back">back button</a>
+            <button data-corners="true" data-mini="true" data-shadow="true">rounder mini shadow button</button>
+        </div>
+        <div class="ui-field-contain">
+            <label for="mytextinput">Text input:</label>
+            <input type="text" name="mytextinput" id="mytextinput" value="new field contain">
+        </div>
+        <div data-role="footer" data-position="fixed" data-fullscreen="true">
+            <h1>footer</h1>
+            <button>1</button>
+            <button>2</button>
+            <button class="ui-btn">class ui-btn</button>
+        </div>
+
+    </div>
+
+    <div data-role='page' data-dialog='true' id='newDialog'>new dialog</div>
+
+
+
+    <div data-role="page" id="page2">
+        <div data-role="header">
+            <h1>P2 navbar</h1>
+            <div data-role='navbar'>
+                <ul>
+                    <li><a href="#" class="ui-btn-active ui-state-persist">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="CONTENT">
+            <p><a href="#page3" data-rel="dialog">to P3 Dialog</a></p>
+            <div data-role="collapsible-set" >
+                <div data-role="collapsible" data-collapsed="false">
+                    <h2>collapsible set</h2>
+                    <p> content </p>
+                </div>
+                <div data-role="collapsible">
+                    <h2>click on me</h2>
+                    <p> content </p>
+                </div>
+            </div>
+            <!--grid a b c d, block a b c d e, and block-a starts a new row-->
+            <p>Grid and block</p>
+            <div class="ui-grid-b">
+                <div class="ui-block-a">r1 c1</div>
+                <div class="ui-block-b">r1 c2</div>
+                <div class="ui-block-c">r1 c3</div>
+                <div class="ui-block-a">r2 c1</div>
+                <div class="ui-block-b">r2 c2</div>
+                <div class="ui-block-c">r2 c3</div>
+            </div>
+            <ol data-role="listview" data-inset="true">
+                <li class="ui-li-has-thumb">
+                    <a href="#">
+                        <img src="./1.jpg">
+                        <h2>List Item 1 Title</h2>
+                        <p>Icon shrinks to 80 x 80</p>
+                    </a>
+                </li>
+                <li data-role="list-divider"></li>
+                <li class="ui-li-has-thumb">
+                    <a href="#">
+                        <img src="1.jpg" class="ui-li-icon">
+                        Icon shrinks to 16 X 16
+                    </a>
+                </li>
+            </ol>
+            <p>auto divider view</p>
+            <ul data-role="listview" data-autodividers="true">
+                <li><a href="#">A<span class="ui-li-count">335</span></a></li>
+                <li><a href="#">B</a></li>
+                <li><a href="#">C</a></li>
+            </ul>
+            <p>divide buttons</p>
+            <ul data-role="listview">
+                <li>
+                    <a href="#"><img src="./1.jpg"></a>
+                    <a href="#">Text</a>
+                </li>
+            </ul>
+        </div>
+        <div data-role="footer">
+            <h1>footer</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="page3">
+        <div data-role="header">
+            <h1>P 3</h1>
+        </div>
+         <!--label is needed, id is needed, fieldcontain is needed-->
+        <div data-role="CONTENT">
+            <p><a href="#page4" data-transition="slide">to P4 transition with slide</a></p>
+            <form method="post" action="/">
+                <div data-role="fieldcontain">
+                    <label for="fname" class="ui-hidden-accessible">name</label>
+                    <input type="text" name="fname" id="fname" placeholder="name...">
+                    <label for="fdate">date</label>
+                    <input type="date" name="fdate" id="fdate">
+                    <label for="femail">email</label>
+                    <input type="email" name="femail" id="femail">
+                    <input type="submit" data-inline="true" value="submit">
+                    <label for="ftextarea">area</label>
+                    <textarea name="ftextarea" id="ftextarea"></textarea>
+                    <labell for="fsearch">search</labell>
+                    <input type="search" name="fsearch" id="fsearch">
+                    <fieldset data-role="controlgroup">
+                        <legend>Radio</legend>
+                        <label for="fr1">r1</label>
+                        <input type="radio" name="fr" id="fr1" value="fr1" checked>
+                        <label for="fr2">r2</label>
+                        <input type="radio" name="fr" id="fr2" value="fr2">
+                    </fieldset>
+                    <fieldset data-role="controlgroup" data-type="horizontal">
+                        <legend>Checkbox</legend>
+                        <label for="fc1">c1</label>
+                        <input type="checkbox" name="fc" id="fc1" value="fc1">
+                        <label for="fc2">c2</label>
+                        <input type="checkbox" name="fc" id="fc2" value="fc2">
+                    </fieldset>
+                    <fieldset data-role="controlgroup">
+                        <label for="sdate">Select</label>
+                        <select name="sdate" id="sdate" multiple data-native-menu="false">
+                            <optgroup label="op group 1">
+                                <option value="d1">d1</option>
+                                <option value="d2">d2</option>
+                            </optgroup>
+                            <optgroup label="op group 2">
+                                <option value="d3">d3</option>
+                                <option value="d4">d4</option>
+                            </optgroup>
+                        </select>
+                    </fieldset>
+                    <label for="frange">Range</label>
+                    <fieldset data-role="controlgroup">
+                        <input type="range" data-highlight="true" name="frange" id="frange" value="20" min="0" max="100">
+                        <label for="fswitch">Toggle Switch</label>
+                    </fieldset>
+                    <fieldset data-role="controlgroup">
+                        <select data-role="flipswitch" name="fswitch" id="fswitch">
+                            <option value="on">on</option>
+                            <option value="off" selected>off</option>
+                        </select>
+                     </fieldset>
+                </div>
+            </form>
+
+        </div>
+        <div data-role="footer">
+            <h1>footer</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="page4" data-overlay-theme="d">
+        <div data-role="header" data-theme="c">
+            <h1>P4 Theme (custom)</h1>
+        </div>
+        <div data-role="CONTENT" data-theme="c">
+            <p><a href="#page5" data-transition="slide" data-direction="reverse">to P5 reversed transition</a></p>
+            <a href="#" data-role="button" data-icon="plus" data-theme="d" data-inline="true">a</a>
+            <a href="#" data-role="button" data-inline="true">b</a>
+            <a href="#" data-role="button" data-inline="true">c</a>
+            <a href="#" data-role="button" data-inline="true">d</a>
+            <a href="#" data-role="button" data-inline="true">e</a>
+        </div>
+        <div data-role="footer" data-theme="d">
+            <h1>footer</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="page5">
+        <div data-role="header">
+            <h1>P5 Event</h1>
+        </div>
+        <div data-role="CONTENT">
+            <p><a href="#page1">P1</a></p>
+            <p id="touch">Contents to touch</p>
+        </div>
+        <div data-role="footer">
+            <h1>footer</h1>
+        </div>
+    </div>
+
+
+</body>
+</html>

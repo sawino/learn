@@ -1,0 +1,66 @@
+@import "someCss.css";
+@import "someCss.css";
+.blue {
+  color: #a52a2a;
+}
+/* comments */
+p {
+  color: #00f;
+}
+.apple,
+.extendApple {
+  color: #f00;
+  background: #80ff8e;
+  font-size: 20px;
+}
+.apple .small,
+.extendApple .small {
+  color: #008000;
+  font-size: 5px;
+}
+.apple.special,
+.extendApple.special {
+  color: #808080;
+}
+.extendApple {
+  font-size: 12;
+}
+.varLiteral {
+  font-size: 25px;
+}
+.varLiteralNum {
+  font-size: 20px;
+}
+.refProperty {
+  border: 1px solid #000;
+  padding: 5px;
+  margin: 5px;
+}
+.pig-one {
+  color: #9acd32;
+}
+.pig-two {
+  color: #adff2f;
+}
+.mixinFun {
+  color: #08c;
+  font-size: 30px;
+}
+.functionCall {
+  color: #ff0;
+}
+.conditional {
+  color: #00f;
+}
+h1 {
+  color: #ffd700;
+}
+h2 {
+  color: #ffd700;
+}
+h3 {
+  color: #ffd700;
+}
+body {
+  background: #ff0;
+}

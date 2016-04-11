@@ -1,0 +1,43 @@
+extends layout
+
+append included
+  link(rel='stylesheet', href='/stylesheets/mss.css')
+  //link(rel='stylesheet', href='../public/stylesheets/mss.css')
+  //link(rel='stylesheet', href='mss.css')
+  style
+    :stylus
+      .color
+        color: pink
+
+block content
+  h1 CSS produced by Stylus
+  p Welcome to #{title}
+  p.apple Property from parent selector
+    span.small  property from nested selector
+
+  p.color Stylus in Jade
+
+  p.apple.special Use &amp; in jade. To ref a parent selector
+
+  p.yellow Import from CSS work by placing the css in the OUTPUT stylesheets folder, not STYLUS stylesheets folder
+
+  p.blue Import from Stylus
+
+  p.extendApple Extend Apple use @extends .apple
+
+  p.varLiteral Font-size defined by literal variable
+
+  p.varLiteralNum Font-size defined by (varLiteralNum)px
+
+  p.refProperty Margin references Padding using @padding
+
+  p.pig-one Property referenced by var using {var}
+  p.pig-two Property referenced by var using {var}
+
+  p.mixinFun CSS from mixin with default 30px
+
+  p.functionCall Color from functionCall(3)
+
+  p.conditional Color from if else
+
+  h3 h3 and Color from for v, i in varList

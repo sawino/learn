@@ -1,0 +1,78 @@
+Visual Leak Detector Version 2.3 installed.
+    Aggregating duplicate leaks.
+    Outputting the report to the debugger and to C:\Users\yangsaw\Documents\Visual Studio 2012\Projects\CrtMemoryChecker\CrtMemoryChecker\memory_leak_report.txt
+WARNING: Visual Leak Detector detected memory leaks!
+---------- Block 3 at 0x00746D68: 1 bytes ----------
+Leak Hash: 0x19E7187D Count: 1
+  Call Stack:
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\dll1\dclass1.cpp (6): DLL1.dll!DClass1::DClass1 + 0x7 bytes
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\crtmemorychecker\crtmemorychecker.cpp (49): CrtMemoryChecker.exe!wmain + 0x8 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (533): CrtMemoryChecker.exe!__tmainCRTStartup + 0x19 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (377): CrtMemoryChecker.exe!wmainCRTStartup
+    0x75E0336A (File and line number not available): kernel32.dll!BaseThreadInitThunk + 0x12 bytes
+    0x776F9F72 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x63 bytes
+    0x776F9F45 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x36 bytes
+  Data:
+    CD                                                           ........ ........
+
+
+---------- Block 4 at 0x00746DA8: 1 bytes ----------
+Leak Hash: 0x3DA171B6 Count: 1
+  Call Stack:
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\dll1\dclass1.cpp (6): DLL1.dll!DClass1::DClass1 + 0x7 bytes
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\crtmemorychecker\crtmemorychecker.cpp (51): CrtMemoryChecker.exe!wmain + 0x8 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (533): CrtMemoryChecker.exe!__tmainCRTStartup + 0x19 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (377): CrtMemoryChecker.exe!wmainCRTStartup
+    0x75E0336A (File and line number not available): kernel32.dll!BaseThreadInitThunk + 0x12 bytes
+    0x776F9F72 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x63 bytes
+    0x776F9F45 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x36 bytes
+  Data:
+    CD                                                           ........ ........
+
+
+---------- Block 5 at 0x00746DE8: 4 bytes ----------
+Leak Hash: 0x41529E4D Count: 1
+  Call Stack:
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\dll2\dclass2.cpp (7): DLL2.dll!DClass2::DClass2 + 0x7 bytes
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\crtmemorychecker\crtmemorychecker.cpp (52): CrtMemoryChecker.exe!wmain + 0x8 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (533): CrtMemoryChecker.exe!__tmainCRTStartup + 0x19 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (377): CrtMemoryChecker.exe!wmainCRTStartup
+    0x75E0336A (File and line number not available): kernel32.dll!BaseThreadInitThunk + 0x12 bytes
+    0x776F9F72 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x63 bytes
+    0x776F9F45 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x36 bytes
+  Data:
+    CD CD CD CD                                                  ........ ........
+
+
+---------- Block 6 at 0x00746E28: 4 bytes ----------
+Leak Hash: 0xA8EA537B Count: 1
+  Call Stack:
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\static1\sclass1.cpp (7): CrtMemoryChecker.exe!SClass1::SClass1 + 0x7 bytes
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\crtmemorychecker\crtmemorychecker.cpp (53): CrtMemoryChecker.exe!wmain + 0x8 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (533): CrtMemoryChecker.exe!__tmainCRTStartup + 0x19 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (377): CrtMemoryChecker.exe!wmainCRTStartup
+    0x75E0336A (File and line number not available): kernel32.dll!BaseThreadInitThunk + 0x12 bytes
+    0x776F9F72 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x63 bytes
+    0x776F9F45 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x36 bytes
+  Data:
+    CD CD CD CD                                                  ........ ........
+
+
+---------- Block 7 at 0x00746E68: 8 bytes ----------
+Leak Hash: 0x1E229AD6 Count: 1
+  Call Stack:
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\static2\sclass2.cpp (7): CrtMemoryChecker.exe!SClass2::SClass2 + 0x7 bytes
+    c:\users\yangsaw\documents\visual studio 2012\projects\crtmemorychecker\crtmemorychecker\crtmemorychecker.cpp (54): CrtMemoryChecker.exe!wmain + 0x8 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (533): CrtMemoryChecker.exe!__tmainCRTStartup + 0x19 bytes
+    f:\dd\vctools\crt_bld\self_x86\crt\src\crtexe.c (377): CrtMemoryChecker.exe!wmainCRTStartup
+    0x75E0336A (File and line number not available): kernel32.dll!BaseThreadInitThunk + 0x12 bytes
+    0x776F9F72 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x63 bytes
+    0x776F9F45 (File and line number not available): ntdll.dll!RtlInitializeExceptionChain + 0x36 bytes
+  Data:
+    CD CD CD CD    CD CD CD CD                                   ........ ........
+
+
+Visual Leak Detector detected 5 memory leaks (198 bytes).
+Largest number used: 526 bytes.
+Total allocations: 526 bytes.
+Visual Leak Detector is now exiting.

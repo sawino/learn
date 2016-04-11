@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "cppAPI", "cppAPI\cppAPI.vcxproj", "{E40BEE89-9A73-40EB-9274-A15E5494BB9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{F649C465-D3E1-4D47-9D03-2878AE94C0FC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E40BEE89-9A73-40EB-9274-A15E5494BB9A}.Debug|Win32.ActiveCfg = Debug|Win32
+		{E40BEE89-9A73-40EB-9274-A15E5494BB9A}.Debug|Win32.Build.0 = Debug|Win32
+		{E40BEE89-9A73-40EB-9274-A15E5494BB9A}.Release|Win32.ActiveCfg = Release|Win32
+		{E40BEE89-9A73-40EB-9274-A15E5494BB9A}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

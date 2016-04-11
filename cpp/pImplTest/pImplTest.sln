@@ -1,0 +1,20 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "pImplTest", "pImplTest\pImplTest.vcxproj", "{CCE76128-7C7B-4B49-BFC1-43B39B27AFFB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{CCE76128-7C7B-4B49-BFC1-43B39B27AFFB}.Debug|Win32.ActiveCfg = Debug|Win32
+		{CCE76128-7C7B-4B49-BFC1-43B39B27AFFB}.Debug|Win32.Build.0 = Debug|Win32
+		{CCE76128-7C7B-4B49-BFC1-43B39B27AFFB}.Release|Win32.ActiveCfg = Release|Win32
+		{CCE76128-7C7B-4B49-BFC1-43B39B27AFFB}.Release|Win32.Build.0 = Release|Win32
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./jquery.mobile-1.4.3/jquery.mobile-1.4.3.min.css">
+    <script src="./jquery-1.11.1.min.js"></script>
+    <script src="./jquery.mobile-1.4.3/jquery.mobile-1.4.3.min.js"></script>
+    <title></title>
+</head>
+<body>
+    <div data-role="page" id="page1">
+        <div data-role="header">
+            <button>HOME</button>
+            <h1>P 1 </h1>
+            <button>search</button>
+        </div>
+        <div data-role="CONTENT">
+            <p><a href="#page2">to P2</a></p>
+            <button>button</button>
+            <input type="button" value="input button">
+            <a href="#" data-role="button">data-role button</a>
+            <a href="#" data-role="button" data-inline="true">inline button</a>
+            <div data-role="controlgroup" data-type="horizontal">
+                <button data-icon="home" data-iconpos="bottom">horizontal</button>
+                <button data-icon="search" data-iconpos="notext">button</button>
+                <button>group</button>
+            </div>
+            <a href="#" data-role="button" data-rel="back">back button</a>
+            <button data-corners="true" data-mini="true" data-shadow="true">rounder mini shadow button</button>
+        </div>
+        <div data-role="footer" data-position="fixed" data-fullscreen="true">
+            <h1>footer</h1>
+            <button>1</button>
+            <button>2</button>
+            <button class="ui-btn">class ui-btn</button>
+        </div>
+    </div>
+
+    <div data-role="page" id="page2">
+        <div data-role="header">
+            <h1>P2 navbar</h1>
+            <div data-role='navbar'>
+                <ul>
+                    <li><a href="#" class="ui-btn-active ui-state-persist">1</a></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                </ul>
+            </div>
+        </div>
+        <div data-role="CONTENT">
+            <p><a href="#page3" data-rel="dialog">to P3 Dialog</a></p>
+            <div data-role="collapsible-set" >
+                <div data-role="collapsible" data-collapsed="false">
+                    <h2>collapsible set</h2>
+                    <p> content </p>
+                </div>
+                <div data-role="collapsible">
+                    <h2>click on me</h2>
+                    <p> content </p>
+                </div>
+            </div>
+            <!--grid a b c d, block a b c d e, and block-a starts a new row-->
+            <p>Grid and block</p>
+            <div class="ui-grid-b">
+                <div class="ui-block-a">r1 c1</div>
+                <div class="ui-block-b">r1 c2</div>
+                <div class="ui-block-c">r1 c3</div>
+                <div class="ui-block-a">r2 c1</div>
+                <div class="ui-block-b">r2 c2</div>
+                <div class="ui-block-c">r2 c3</div>
+            </div>
+            <ol data-role="listview" data-inset="true">
+                <li>
+                    <a href="#">
+                        <img src="./1.jpg">
+                        <h2>List Item 1 Title</h2>
+                        <p>Icon shrinks to 80 x 80</p>
+                    </a>
+                </li>
+                <li data-role="list-divider"></li>
+                <li>
+                    <a href="#">
+                        <img src="1.jpg" class="ui-li-icon">
+                        Icon shrinks to 16 X 16
+                    </a>
+                </li>
+            </ol>
+            <p>auto divider view</p>
+            <ul data-role="listview" data-autodividers="true">
+                <li><a href="#">A<span class="ui-li-count">335</span></a></li>
+                <li><a href="#">B</a></li>
+                <li><a href="#">C</a></li>
+            </ul>
+            <p>divide buttons</p>
+            <ul data-role="listview">
+                <li>
+                    <a href="#"><img src="./1.jpg"></a>
+                    <a href="#">Text</a>
+                </li>
+            </ul>
+        </div>
+        <div data-role="footer">
+            <h1>footer</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="page3">
+        <div data-role="header">
+            <h1>P 3</h1>
+        </div>
+        <div data-role="CONTENT">
+            <p><a href="#page4" data-transition="slide">to P4 transition with slide</a></p>
+        </div>
+        <div data-role="footer">
+            <h1>footer</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="page4">
+        <div data-role="header">
+            <h1>P 4</h1>
+        </div>
+        <div data-role="CONTENT">
+            <p><a href="#page5" data-transition="slide" data-direction="reverse">to P5 reversed transition</a></p>
+        </div>
+        <div data-role="footer">
+            <h1>footer</h1>
+        </div>
+    </div>
+
+    <div data-role="page" id="page5">
+        <div data-role="header">
+            <h1>P 5</h1>
+        </div>
+        <div data-role="CONTENT">
+            <p><a href="#page1">P1</a></p>
+        </div>
+        <div data-role="footer">
+            <h1>footer</h1>
+        </div>
+    </div>
+
+
+</body>
+</html>

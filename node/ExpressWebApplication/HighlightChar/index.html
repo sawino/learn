@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="jquery-1.9.0.js"></script>
+    <link rel="stylesheet" href="style.css"/>
+    <script>
+        $(document).ready(function() {
+
+            $('input').click(function(e) {
+                var obj = $('#mystr');
+                var str = obj.text();
+                var oldsubdir = str.substr(3, 4);
+                var newsubdir = '<span class="highlight">' + oldsubdir + '</span>';
+                str = str.replace(oldsubdir, newsubdir);
+                console.log(str);
+                obj.html(str);
+            });
+
+        });
+
+    </script>
+    <title></title>
+</head>
+<body>
+    <p id="mystr">Hello PIG Apple</p>
+    <input type="button" value="C"/>
+</body>
+</html>

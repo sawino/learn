@@ -1,0 +1,75 @@
+@import "someCss.css"
+@import "someCss.css"
+@import "someStylus.styl"
+// comments in visiable
+/* comments */
+varLiteral = 25px
+varLiteralNum = 20
+varText = pig
+varCondition = 3
+varList = a b c
+
+mixinFunction(fontSize = 30px)
+  color: #0088cc
+  font-size: fontSize
+
+functionCall(val)
+  if (val > 3)
+    return blue
+  else
+    return yellow
+
+// properties
+p {
+  color: blue;
+}
+
+.apple
+  color red
+  background #80ff8e
+  font-size 20px
+  .small
+    color green
+    font-size 5px
+  &.special
+    color: grey
+
+.extendApple
+  @extends .apple
+  font-size 12
+
+.varLiteral
+  font-size: varLiteral
+
+.varLiteralNum
+  font-size: (varLiteralNum)px
+
+.refProperty
+  border 1px solid black
+  padding 5px
+  margin @padding
+
+.{varText}-one
+  color yellowgreen
+
+.{varText}-two
+  color greenyellow
+
+.mixinFun
+  mixinFunction()
+
+.functionCall
+  color: functionCall(3)
+
+.conditional
+  if (varCondition > 1)
+    color #0000ff
+  else
+    color #ffff00
+
+for v, i in varList
+  h{i+1}
+    color gold
+
+body
+  background: #ffff00

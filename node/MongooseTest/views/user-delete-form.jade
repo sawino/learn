@@ -1,0 +1,8 @@
+extends layout
+block content
+    h1= title
+    p #{name} #{email}, delete urself?
+    form(id='formUserDelete', method='post', action='')
+        // use hidden to pass value
+        input(type='hidden', name='_id', id='_id', value='#{_id}')
+        input(type='submit', value='Yes')

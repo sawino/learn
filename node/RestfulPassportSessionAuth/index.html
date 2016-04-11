@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="/javascripts/jquery-1.11.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+
+
+            // create
+//            $.post('/api/bears', {'name':'ffff'}, function(data) {
+//            });
+
+            // get
+//            $.get('/api/bears', function (data)
+//            {
+//                var value = JSON.stringify(data);
+//
+//                $('#result').text(value);
+//            });
+
+            // update
+//            $.ajax({
+//                url: '/api/bears/53da0ea400e91800006579a2',
+//                type: 'PUT',
+//                data: {
+//                    name: 'updatedName'
+//                },
+//                success: function(data, status, obj) {
+//                    var value = JSON.stringify(data);
+//
+//                    $('#result').text(value);
+//                }
+//            });
+
+            // delete
+            $.ajax({
+                url: '/api/bears/53da0ea400e91800006579a2',
+                type: "DELETE",
+                success: function(data, status, jqXHR) {
+                    var value = JSON.stringify(data);
+
+                    $('#result').text(value);
+                }
+            });
+
+        });
+    </script>
+
+</head>
+<body>
+    <label>result: </label>
+    <label id="result"></label>
+</body>
+</html>

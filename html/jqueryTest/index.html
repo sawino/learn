@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <style>
+        .bgblue
+        {
+          background: blue;
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/jquery-1.11.1.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function()
+        {
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//
+//            });
+
+            // selector
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//                $(this).val('Changed');
+//                $('p:first').css({'background': 'red'});
+//            });
+
+            // prepend before
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//                $('p').prepend(' prepend ');
+//                $('p').before('<strong> before </strong>');
+//
+//            });
+
+            // sibling parent child
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//                $('p:first').next().hide(); // sibling
+//
+//                $('h3').parent().css({'color': 'red'});
+////                $('ul').children('li').each(function()
+////                {
+////                    $(this).html('prepended  ');
+////                });
+//
+//                $('ul').children('li').each(function(index, element)
+//                {
+//                    if (index === 1)
+//                    {
+//                        $(this).html('child("li")');
+//                        return;
+//                    }
+//                });
+//
+//            });
+
+            // html val text
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//                $('input').val('val');
+//                $('p:eq(0)').text("text");
+//                $('h3').html('<h1>h1</h1>');
+//
+//            });
+
+            // css class
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+////                $('p').addClass('bgblue');
+//                $('p').toggleClass('bgblue');
+//            });
+
+            // size
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//                $('input').width(500);
+//                $('input').height(100);
+//            });
+
+                // remove empty
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//                $('ul').empty();
+//                alert('children is empty');
+//                $('ul').remove();
+//                alert('ul is removed');
+//            });
+
+
+            // filter
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//                $('li').first().text('first');
+//                $('li').last().text('last');
+//                $('li').eq(1).text('eq');
+//                $('p').filter('.hey').text('filter');
+//                $('p').not('.hey').text('not');
+//            });
+
+            // show hide fadeOut fadeIn slide animation
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//                for (var i = 0; i < 2; i++) {
+//                    $('p').first().hide(50);
+//                    $('p').first().show(50);
+//                }
+//
+//                $('ul').hide();
+//                $('h3').fadeOut(2000);
+//                $('h3').fadeIn();
+//                $('button').slideToggle(3000);
+//
+//
+//                for (var i = 0; i < 2; i++) {
+//                    $('h2').last().animate(
+//                            {
+//                                "margin-left": '10px',
+//                                opacity: 0.5
+//                            },
+//                            50
+//                    );
+//
+//                    $('h2').animate(
+//                            {
+//                                "margin-left": '0',
+//                                color: 1
+//                            },
+//                            50
+//                    );
+//                }
+//            });
+
+            // ajax get， load
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+                // simple
+//                $.get('http://localhost:3000/getTest', function(data) {
+//                    $('input').val(data);
+//                });
+
+
+                // complex, param & query
+//                $.get('http://localhost:3000/getComplexTest/pig', {'name': 'sam'}, function(data, status, xhr) {
+//
+//                    var val = status;
+//                    val += data;
+//                    $('input').val(val);
+//                }, 'text');
+
+                // getJSON
+//                $.getJSON('http://localhost:3000/getJSONTest', {'name': 'sam'}, function(data) {
+//
+//                    $('input').val(data.name);
+//                });
+
+                // getScript
+//                    $.getScript('http://localhost:3000/getScriptTest', {'name': 'sam'}, function() {
+//
+//                });
+
+                // load
+//                $('p').load('http://localhost:3000/getTest');
+//            });
+
+            // ajax post, arguments are same as get
+//            $('#testBtn').click(function(e)
+//            {
+//                e.preventDefault();
+//
+//                $.post('http://localhost:3000/postTest', {'name': 'judy'}, function(data)
+//                {
+//                    $('input').val(data.name);
+//                });
+//
+//            });
+
+            // serialize form
+            $('#testBtn').click(function(e)
+            {
+                e.preventDefault();
+                // normal
+//                var value = $('form').serialize();
+//                alert(value);
+
+                // array as json
+                var value = $('form').serializeArray();
+                $.each(value, function(i, field){
+                    $("input:first").val(field.name + ":" + field.value + " ");
+                });
+
+            });
+        });
+
+
+    </script>
+    <title></title>
+</head>
+<body>
+    <div>
+        <h2>H2</h2>
+        <h3>H3</h3>
+        <p>p1</p>
+        <p class="hey">p2</p>
+        <input type="text">
+        <ul>
+            <li>l 1</li>
+            <li>l 2</li>
+            <li>l 3</li>
+        </ul>
+        <form action="/" method="post">
+            <input name="N1" type="text" value="V1">
+            <input name="N2" type="checkbox" value="V2" checked>
+            <input name="N3" type="radio" value="V3" checked>
+        </form>
+        <button id='testBtn' type="button">Test</button>
+
+    </div>
+</body>
+</html>
