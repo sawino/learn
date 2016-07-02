@@ -29,6 +29,11 @@ class E6C {
 };
 
 class SubClass extends E6C {
+    
+    constructor() {
+        super();
+    }
+    
     printA() {
         console.log('sub mA');
     }
@@ -58,11 +63,24 @@ exports.classTest = function() {
     
     var s = new SubClass();
     s.printA();
+    
+    log(s.p1);
+    log(SubClass.sp);
 };
 
 exports.constTest = function() {
     var o = new E6C();
     o.constTest();  
+    
+    const pointerConst = {};
+    pointerConst.value = 111;    
+    console.log(pointerConst.value);
+    
+    // the object itself is const but not its children
+    const  objectConst = Object.freeze({}) ;
+    objectConst.value = 222;
+    
+    console.log(objectConst.value);
 };
 
 exports.templateStringTest = function() {
@@ -227,4 +245,131 @@ exports.asyncMongooseTest = async function() {
     await Record.create({name: 's'});
     // all queries don't return Promise, but their exec() does.
     return await Record.find({}).exec();
+};
+
+exports.destructTest = () => {
+    
+    let [first, second, ...left] = [1, 2, 3, 4];
+    log(first);
+    log(second);
+    log(left);
+    
+    let {foo: foo2, bar, baz: baz2 = 3} = {foo: 1, bar: 2};
+    // assign foo to foo2
+    log(foo2);
+    // if the 'to' is not defined, use from
+    log(bar);
+    // the to can assign default value
+    log(baz2);
+    
+    const [a, b] = 'hello';
+    log(a);
+    
+    let {length: len} = 'hello';
+    log(len);
+    
+    // return could be ignored if no {} 
+    let mapResult = [[1, 2], [3, 4]].map(([x, y]) => {
+        return x + y;
+    });
+    
+    log(mapResult);
+}   
+
+exports.symbolTest = () => {
+    let obj = {
+        S1: Symbol('a'),
+        S2: Symbol('a'),
+        P1: 'a',
+        P2: 'a'
+    };
+    
+    // can't use like this
+    // log(obj[S1]);
+    log(obj.S1); // Symbol('a')
+    log(obj.S1 === obj.s2); // false
+    log(obj.P1 === obj.P2); // true
+    
+    let obj2 = {};
+    let s = Symbol('s');
+    // use [] to add symbol
+    obj2[s] = 'sss';
+    // use [] to read symbol
+    log(obj2[s]);
+    // undefined
+    log(obj2.s);
+};
+
+exports.setMapTest = () => {
+  let arr = [1, 2, 3, 4, 4, 5, 5];
+  let setObj = new Set();
+  arr.map(x => setObj.add(x));  
+  log([...setObj]); // 1, 2, 3, 4, 5
+  
+  // other members
+  // size, add(), delete(), has(), clear(), keys(), values(), entries(), forEach()
+  
+  // set could have array's functions
+  setObj = new Set([...setObj].map(x => x * 2));
+  setObj = new Set([...setObj].filter(x => x < 5));
+  log([...setObj]); // [2, 4]
+  
+  // GC will not consider the items in the weak set.
+  let weakSetObj = new WeakSet();
+  // can add obj only, no size, forEach().
+  weakSetObj.add({ x: 1});
+  
+  let mapObj = new Map();
+  mapObj.set(0, 'hello');
+  mapObj.set('a', 'b');
+  for (let x of mapObj.keys()) {
+      log(mapObj[x]);
+  }
+  // other methods
+  // size, delete(), delete(), clear(), keys(), values(), entries(), forEach()
+  
+};
+
+class IterTest {
+    constructor(start, stop) {
+        this.value = start;
+        this.stop = stop;
+    }
+    
+    [Symbol.iterator]() { 
+        return this;
+    }
+    
+    next() {
+        let v = this.value;
+        if (v < this.stop) {
+            this.value++;
+            return {done: false, value: v};
+        } else {
+            return {done: true, value: undefined};
+        }
+    }
+}
+
+exports.iteratorTest = () => {
+    let o = new IterTest(1, 5);
+    for (let x of o) {
+        log(x);
+    }
+};
+
+function* generatorFun() {
+    yield 1;
+    yield* [2,3, 4];
+    yield 5;
+};
+
+exports.generatorTest = () => {
+    for (let x of generatorFun()) {
+        log(x);
+    }
+    
+    for (let x of generatorFun()) {
+        log(x);
+    }
 };

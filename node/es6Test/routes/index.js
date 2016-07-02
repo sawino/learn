@@ -29,7 +29,7 @@ router.get('/templaetStringTest', function(req, res) {
 });
 
 router.get('/lambdaTest', function(req, res) {
-  e6.lambdaTest();
+  e6.lambdaTest();  
   res.status(200).end('OK');  
 });
 
@@ -64,7 +64,7 @@ router.get('/asyncTest', async function(req, res) {
 
 router.get('/asyncMGTest', async function(req, res) {
    try {
-       var v = await e6.asyncMongooseTest();
+       var v = await e6.asyncMongooseTest();    
        debug(v);
        res.status(200).end(JSON.stringify(v));
    } 
@@ -73,5 +73,33 @@ router.get('/asyncMGTest', async function(req, res) {
    }
 });
 
+router.get('/destructTest', (req, res) => {
+   e6.destructTest();
+   
+   res.send('ok'); 
+});
+
+router.get('/symbolTest', (req, res) => {
+   e6.symbolTest();
+   
+   res.send('OK'); 
+});
+
+router.get('/setMapTest', (req, res) => {
+    e6.setMapTest();
+    
+    res.send('OK');
+});
+
+router.get('/iteratorTest', (req, res) => {
+    
+    e6.iteratorTest();
+    res.send('OK');
+});
+
+router.get('/generatorTest', (req, res) => {
+    e6.generatorTest();
+    res.send('OK');
+});
 
 module.exports = router;
