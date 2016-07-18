@@ -57,13 +57,29 @@ app.use(function(err, req, res, next) {
 });
 
 
-let onlineUsers = {};
+var onlineUsers = {};
 var onlineCount = 0;
 
 app.initSocketIO = function initSocketIO(httpServer) {
   io = require('socket.io')(httpServer);
 
   io.on('connection', function(socket) {
+
+    var clientIP = socket.request.connection.remoteAddress;
+    socket.on('login', (obj) => {
+      socket.name = obj.userid;
+      
+      if (!onlineUsers.hasOwnProperty(obj.userid)) {
+        onlineUsers[obj.userid] = obj.username;
+        onlineCount++;
+      }
+
+      io.emit('login', {
+        onlineUsers: onlineUsers, onlineCount: onlineCount,  user: obj
+      });
+
+      console.log(obj.username + " joined chat room");
+    });
     // send to all
     // socket.broadcast.emit('hi');
     console.log('new user connected');
@@ -74,10 +90,25 @@ app.initSocketIO = function initSocketIO(httpServer) {
     });
 
     socket.on('disconnect', () => {
-        console.log('user disconnect');
+        console.log('user disconnect');        
+        if (onlineUsers.hasOwnProperty(socket.name)) {
+          var obj = {userid: socket.name, username: onlineUsers[socket.name]};
+
+          delete onlineUsers[socket.name];
+          onlineCount--;
+
+          io.emit('logout', {
+            onlineUsers:onlineUsers, onlineCount: onlineCount, user:obj
+          });
+
+          console.log(obj.username + " quit");
+        }
     });
 
-
+    socket.on('message', function(obj) {
+      io.emit('message', obj);
+      console.log(obj.username + " said " + obj.content);
+    })
   });
 }
 

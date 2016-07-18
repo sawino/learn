@@ -2,7 +2,66 @@ extends layout
 
 block content
   ul#messages
-
-  form(action="")
+  form#loginForm
+    input.username
+    button.login login
+  button.logout logout
+  form#messageForm(action="")
     input#m(autocomplete="off")
     button send
+
+  script(src="javascripts/socket.io.js")
+  script(src="javascripts/jquery/dist/jquery.min.js")
+  script.
+    $(function() {
+      var socket = io();
+      var user = {};
+
+      function genUid() {
+        return new Date().getTime()+""+Math.floor(Math.random()*899+100);
+      }
+
+      $('#messageForm').submit(function() {
+        var tempContent = $('#m').val();
+        var msgContent = {
+          userid: user.userid,
+          username: user.username,
+          content: tempContent
+        };
+
+        socket.emit('message', msgContent);
+        $('#m').val('');
+        return false;
+      });
+
+      $('#loginForm').submit(function() {            
+          user.userid = genUid();
+          user.username = $('input.username').val();
+          socket.emit('login', user);
+          return false;
+      });
+
+      $('button.logout').click(function() {
+        location.reload();
+      });
+      
+      function addMessage(msg) {
+        $('#messages').append($('<li>').text(msg));
+      }
+
+      socket.on('login', function(o) {
+        addMessage(JSON.stringify(o));
+      })
+
+      socket.on('logout', function(o) {
+        addMessage(JSON.stringify(o));
+      })
+
+      socket.on('message', function(o) {
+        addMessage(JSON.stringify(o));
+      })
+
+      socket.on('chat message', function(msg) {
+        addMessage(msg);
+      });
+    });
