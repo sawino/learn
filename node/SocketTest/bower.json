@@ -1,0 +1,20 @@
+{
+  "name": "SocketTest",
+  "description": "",
+  "main": "",
+  "authors": [
+    "Sawino <Samuel.Yang@autodesk.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/sawino/learn",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "^3.1.0"
+  }
+}
