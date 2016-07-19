@@ -61,11 +61,20 @@ var onlineUsers = {};
 var onlineCount = 0;
 
 app.initSocketIO = function initSocketIO(httpServer) {
+
+  // http://socket.io/
+  
   io = require('socket.io')(httpServer);
+
+  // custom namespace, default is /
+  io = io.of('/myns');
 
   io.on('connection', function(socket) {
 
     var clientIP = socket.request.connection.remoteAddress;
+    console.log(clientIP);
+    // client ip address
+    console.log(JSON.stringify(socket.request.headers.referer));
     socket.on('login', (obj) => {
       socket.name = obj.userid;
       
@@ -74,19 +83,37 @@ app.initSocketIO = function initSocketIO(httpServer) {
         onlineCount++;
       }
 
+      // send to all, default namespace is /
       io.emit('login', {
         onlineUsers: onlineUsers, onlineCount: onlineCount,  user: obj
-      });
+      }); // equals to io.sockets.emit()
+      // send to all others 
+      // socket.broadcast.emit('hi');
+      // send to all in a room
+      // io.to(obj.roomname).emit();
+      // send to all others in a room
+      // socket.broadcast.to(obj.roomname).emit()
 
       console.log(obj.username + " joined chat room");
     });
-    // send to all
-    // socket.broadcast.emit('hi');
+
     console.log('new user connected');
 
     socket.on('chat message', (msg) => {
       console.log('message: ' + msg);
       io.emit('chat message', msg);
+    });
+
+    socket.on('join', function(obj) {
+
+      socket.join(obj.roomname);
+      socket.broadcast.to(obj.roomname).emit('message', obj.username + ' joined ' +
+          obj.roomname);
+    });
+
+    socket.on('leave', function(obj) {
+      socket.broadcast.to(obj.oldroomname).emit('message', obj.username + " left room");
+      socket.leave(obj.oldroomname);      
     });
 
     socket.on('disconnect', () => {
@@ -97,7 +124,7 @@ app.initSocketIO = function initSocketIO(httpServer) {
           delete onlineUsers[socket.name];
           onlineCount--;
 
-          io.emit('logout', {
+          socket.broadcast.emit('logout', {
             onlineUsers:onlineUsers, onlineCount: onlineCount, user:obj
           });
 
@@ -106,7 +133,8 @@ app.initSocketIO = function initSocketIO(httpServer) {
     });
 
     socket.on('message', function(obj) {
-      io.emit('message', obj);
+
+      socket.broadcast.to(obj.roomname).emit('message', obj);
       console.log(obj.username + " said " + obj.content);
     })
   });

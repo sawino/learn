@@ -6,16 +6,23 @@ block content
     input.username
     button.login login
   button.logout logout
+  form#joinForm
+    input.roomname
+    button.join join
+  button.leave leave
   form#messageForm(action="")
     input#m(autocomplete="off")
     button send
+  
 
   script(src="javascripts/socket.io.js")
   script(src="javascripts/jquery/dist/jquery.min.js")
   script.
     $(function() {
-      var socket = io();
+      // io() defaults to connect to namespace /
+      var socket = io('/myns');
       var user = {};
+      var room = {};
 
       function genUid() {
         return new Date().getTime()+""+Math.floor(Math.random()*899+100);
@@ -26,7 +33,8 @@ block content
         var msgContent = {
           userid: user.userid,
           username: user.username,
-          content: tempContent
+          content: tempContent,
+          roomname: room.roomname
         };
 
         socket.emit('message', msgContent);
@@ -43,6 +51,21 @@ block content
 
       $('button.logout').click(function() {
         location.reload();
+      });
+
+      $('#joinForm').submit(function() {
+        room.username = user.username;
+        room.oldroomname =room.roomname; 
+        room.roomname = $('input.roomname').val();
+        socket.emit('join', room);     
+        return false;   
+      });
+
+      $('button.leave').click(function() {
+        
+        room.oldroomname = room.roomname;
+        room.roomname = "";
+        socket.emit('leave', room);
       });
       
       function addMessage(msg) {
