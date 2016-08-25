@@ -2,6 +2,7 @@
 const express = require("express");
 const path = require("path");
 const indexRoute = require("./routes/index");
+const testRoute = require("./routes/testRoute");
 class Server {
     constructor() {
         this.app = express();
@@ -21,6 +22,8 @@ class Server {
         router = express.Router();
         var index = new indexRoute.Index();
         router.get("/", index.index.bind(index.index));
+        var test = new testRoute.TestRoute();
+        router.get("/test", test.helloTS);
         this.app.use(router);
     }
 }

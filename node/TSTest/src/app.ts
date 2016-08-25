@@ -7,6 +7,7 @@ import * as bodyParser from "body-parser";
 import * as express from "express";
 import * as path from "path";
 import * as indexRoute from "./routes/index";
+import * as testRoute from "./routes/testRoute";
 
 class Server {
 
@@ -33,8 +34,9 @@ class Server {
         router = express.Router();
 
         var index: indexRoute.Index = new indexRoute.Index();
-
         router.get("/", index.index.bind(index.index));
+        var test: testRoute.TestRoute = new testRoute.TestRoute();
+        router.get("/test", test.helloTS);
         this.app.use(router);
     }
 }
